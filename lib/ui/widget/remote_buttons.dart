@@ -61,7 +61,7 @@ Widget _temperatureSetting() => Column(
             size: 50,
           ),
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 25),
         ElevatedButton(
           onPressed: () {
             decreaseTemp();
