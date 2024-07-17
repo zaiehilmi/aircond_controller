@@ -1,6 +1,6 @@
-import 'package:izone_interview/service/operation/fan_speed.dart';
-import 'package:izone_interview/service/operation/mode.dart';
-import 'package:izone_interview/service/operation/power.dart';
+import '../service/operation/fan_speed.dart';
+import '../service/operation/mode.dart';
+import '../service/operation/power.dart';
 import 'package:june/june.dart';
 
 class ControllerData extends JuneState {

@@ -1,3 +1,3 @@
-# izone_interview
+# Aircond Remote Controller
 
-A new Flutter project.
+Flutter project for iZone Software Engineer Assessment

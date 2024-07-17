@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izone_interview/state/controller_data.dart';
+import '../../state/controller_data.dart';
 
 const int _maxTemp = 30;
 const int _minTemp = 15;

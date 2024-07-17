@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:izone_interview/ui/screen/remote_control.dart';
+
+import 'ui/screen/remote_control.dart';
 
 void main() {
   runApp(const MainApp());

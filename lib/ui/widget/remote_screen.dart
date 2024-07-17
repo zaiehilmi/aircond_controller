@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:izone_interview/service/operation/power.dart';
-import 'package:izone_interview/state/controller_data.dart';
-import 'package:izone_interview/ui/theme/typography.dart';
-import 'package:izone_interview/util/dimension.dart';
 import 'package:june/june.dart';
+
+import '../../service/operation/power.dart';
+import '../../state/controller_data.dart';
+import '../../util/dimension.dart';
+import '../theme/typography.dart';
 
 Widget RemoteScreen(BuildContext context) {
   return JuneBuilder(

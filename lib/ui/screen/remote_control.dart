@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:izone_interview/ui/widget/remote_screen.dart';
 
 import '../widget/remote_buttons.dart';
+import '../widget/remote_screen.dart';
 
 class RemoteControl extends StatelessWidget {
   const RemoteControl({super.key});

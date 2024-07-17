@@ -1,4 +1,4 @@
-package com.example.izone_interview
+package com.zaie.aircond_remote
 
 import io.flutter.embedding.android.FlutterActivity
 
