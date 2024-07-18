@@ -41,5 +41,10 @@ void switchAircondMode() async {
       msg: '${requestBody.cmd.displayName} set to ${controllerState.aircondMode.displayName}',
       backgroundColor: Colors.lightBlue.shade600,
     );
+  } else {
+    Fluttertoast.showToast(
+      msg: 'Failed to update',
+      backgroundColor: Colors.red.shade600,
+    );
   }
 }

@@ -27,6 +27,11 @@ Future<void> adjustTemp({required bool increase}) async {
       msg: '${requestBody.cmd.displayName} set to ${controllerState.currentTemp}',
       backgroundColor: Colors.lightBlue.shade600,
     );
+  } else {
+    Fluttertoast.showToast(
+      msg: 'Failed to update',
+      backgroundColor: Colors.red.shade600,
+    );
   }
 
   debugPrint('Suhu semasa: ${controllerState.currentTemp}');
