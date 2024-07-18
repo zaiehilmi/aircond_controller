@@ -1,4 +1,6 @@
+import 'package:aircond_remote/service/request_api.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../state/controller_data.dart';
 
@@ -12,21 +14,32 @@ enum FanSpeed {
   const FanSpeed({required this.displayName});
 }
 
-void switchFanSpeed() {
-  switch (contorllerState.fanSpeed) {
+void switchFanSpeed() async {
+  switch (controllerState.fanSpeed) {
     case FanSpeed.low:
-      contorllerState.fanSpeed = FanSpeed.medium;
+      controllerState.fanSpeed = FanSpeed.medium;
       break;
     case FanSpeed.medium:
-      contorllerState.fanSpeed = FanSpeed.high;
+      controllerState.fanSpeed = FanSpeed.high;
       break;
     case FanSpeed.high:
-      contorllerState.fanSpeed = FanSpeed.auto;
+      controllerState.fanSpeed = FanSpeed.auto;
       break;
     case FanSpeed.auto:
-      contorllerState.fanSpeed = FanSpeed.low;
+      controllerState.fanSpeed = FanSpeed.low;
       break;
   }
-  contorllerState.setState();
-  debugPrint('Fan Speed: ${contorllerState.fanSpeed.displayName}');
+
+  controllerState.setState();
+
+  final fanSpeedIndex = controllerState.fanSpeed.index + 1;
+  final requestBody = ApiRequestBody(cmd: Command.fanSpeed, value: fanSpeedIndex);
+  final res = await requestApi(requestBody);
+  if (res) {
+    Fluttertoast.showToast(
+      msg: 'llaaaa',
+    );
+  }
+
+  debugPrint('Fan Speed: ${controllerState.fanSpeed.displayName} \n');
 }

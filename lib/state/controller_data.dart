@@ -10,4 +10,4 @@ class ControllerData extends JuneState {
   Power power = Power.off;
 }
 
-final contorllerState = June.getState(() => ControllerData());
+final controllerState = June.getState(() => ControllerData());

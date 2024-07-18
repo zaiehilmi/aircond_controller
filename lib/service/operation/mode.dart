@@ -13,20 +13,20 @@ enum AircondMode {
 }
 
 void switchAircondMode() {
-  switch (contorllerState.aircondMode) {
+  switch (controllerState.aircondMode) {
     case AircondMode.cool:
-      contorllerState.aircondMode = AircondMode.heat;
+      controllerState.aircondMode = AircondMode.heat;
       break;
     case AircondMode.heat:
-      contorllerState.aircondMode = AircondMode.vent;
+      controllerState.aircondMode = AircondMode.vent;
       break;
     case AircondMode.vent:
-      contorllerState.aircondMode = AircondMode.dry;
+      controllerState.aircondMode = AircondMode.dry;
       break;
     case AircondMode.dry:
-      contorllerState.aircondMode = AircondMode.cool;
+      controllerState.aircondMode = AircondMode.cool;
       break;
   }
-  contorllerState.setState();
-  debugPrint('Aircond Mode: ${contorllerState.aircondMode.displayName}');
+  controllerState.setState();
+  debugPrint('Aircond Mode: ${controllerState.aircondMode.displayName}');
 }

@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "ffb9288b-9903-4226-b635-f1df052e0db8",
+		"name": "Assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "3028943"
+	},
+	"item": [
+		{
+			"name": "Local Query: AC status",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"iZoneV2Request\":{\r\n        \"Type\":1,\r\n        \"No\":0,\r\n        \"No1\":0\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.izone.com.au/testsimplelocalcocb"
+			},
+			"response": []
+		},
+		{
+			"name": "Local Control: System ON OFF",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"SysOn\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.izone.com.au/testsimplelocalcocb"
+			},
+			"response": []
+		},
+		{
+			"name": "Local Control: Set fan speed",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"SysFan\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.izone.com.au/testsimplelocalcocb"
+			},
+			"response": []
+		},
+		{
+			"name": "Local Control: Set mode",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"SysMode\":1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.izone.com.au/testsimplelocalcocb"
+			},
+			"response": []
+		},
+		{
+			"name": "Local Control: Set point",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"SysSetpoint\":1900\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.izone.com.au/testsimplelocalcocb"
+			},
+			"response": []
+		}
+	]
+}

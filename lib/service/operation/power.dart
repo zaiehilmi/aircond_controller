@@ -8,13 +8,13 @@ enum Power {
 }
 
 void turnOnOff() {
-  switch (contorllerState.power) {
+  switch (controllerState.power) {
     case Power.on:
-      contorllerState.power = Power.off;
+      controllerState.power = Power.off;
     case Power.off:
-      contorllerState.power = Power.on;
+      controllerState.power = Power.on;
   }
 
-  contorllerState.setState();
-  debugPrint('Power: ${contorllerState.power}');
+  controllerState.setState();
+  debugPrint('Power: ${controllerState.power}');
 }
