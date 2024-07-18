@@ -1,10 +1,40 @@
+import 'dart:async';
+
+import 'package:aircond_remote/service/request_api.dart';
 import 'package:flutter/material.dart';
 
 import '../widget/remote_buttons.dart';
 import '../widget/remote_screen.dart';
 
-class RemoteControl extends StatelessWidget {
+const Duration pollingInterval = Duration(seconds: 30);
+
+class RemoteControl extends StatefulWidget {
   const RemoteControl({super.key});
+
+  @override
+  State<RemoteControl> createState() => _RemoteControlState();
+}
+
+class _RemoteControlState extends State<RemoteControl> {
+  Timer? _timer;
+
+  @override
+  void initState() {
+    _timer = Timer.periodic(
+      pollingInterval,
+      (timer) async => await requestApi(
+        ApiRequestBody(cmd: Command.fanSpeed, value: 0),
+        isQuery: true,
+      ),
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
