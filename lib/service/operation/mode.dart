@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../state/controller_data.dart';
+import '../request_api.dart';
 
 enum AircondMode {
   cool(displayName: 'Cool'),
@@ -12,7 +14,7 @@ enum AircondMode {
   const AircondMode({required this.displayName});
 }
 
-void switchAircondMode() {
+void switchAircondMode() async {
   switch (controllerState.aircondMode) {
     case AircondMode.cool:
       controllerState.aircondMode = AircondMode.heat;
@@ -27,6 +29,17 @@ void switchAircondMode() {
       controllerState.aircondMode = AircondMode.cool;
       break;
   }
-  controllerState.setState();
-  debugPrint('Aircond Mode: ${controllerState.aircondMode.displayName}');
+
+  final modeIndex = controllerState.aircondMode.index + 1;
+  final requestBody = ApiRequestBody(cmd: Command.mode, value: modeIndex);
+  final res = await requestApi(requestBody);
+
+  if (res) {
+    controllerState.setState();
+
+    Fluttertoast.showToast(
+      msg: '${requestBody.cmd.displayName} set to ${controllerState.aircondMode.displayName}',
+      backgroundColor: Colors.lightBlue.shade600,
+    );
+  }
 }

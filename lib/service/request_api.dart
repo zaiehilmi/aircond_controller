@@ -1,17 +1,18 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 enum Command {
-  systemPower(settingCode: 'SysOn'),
-  fanSpeed(settingCode: 'SysFan'),
-  mode(settingCode: 'SysMode'),
-  temperaturePoint(settingCode: 'SysSetpoint');
+  systemPower(settingCode: 'SysOn', displayName: 'Power'),
+  fanSpeed(settingCode: 'SysFan', displayName: 'Fan speed'),
+  mode(settingCode: 'SysMode', displayName: 'Mode'),
+  temperaturePoint(settingCode: 'SysSetpoint', displayName: 'Temperature');
 
   final String settingCode;
-  const Command({required this.settingCode});
+  final String displayName;
+
+  const Command({required this.settingCode, required this.displayName});
 }
 
 class ApiRequestBody {
@@ -21,13 +22,25 @@ class ApiRequestBody {
   ApiRequestBody({required this.cmd, required this.value});
 }
 
-Future<bool> requestApi(ApiRequestBody requestBody) async {
+Future<bool> requestApi(ApiRequestBody requestBody, {bool isQuery = false}) async {
   try {
     final url = Uri.https('api.izone.com.au', '/testsimplelocalcocb');
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
-      body: json.encode({requestBody.cmd.settingCode: requestBody.value}),
+      body: json.encode(
+        (!isQuery)
+            ? {
+                requestBody.cmd.settingCode: requestBody.value,
+              }
+            : {
+                "iZoneV2Request": {
+                  "Type": 1,
+                  "No": 0,
+                  "No1": 0,
+                }
+              },
+      ),
     );
     debugPrint('Response body: ${response.body}');
 

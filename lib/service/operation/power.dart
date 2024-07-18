@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../state/controller_data.dart';
+import '../request_api.dart';
 
-enum Power {
-  on,
-  off,
-}
+enum Power { off, on }
 
-void turnOnOff() {
+void turnOnOff() async {
   switch (controllerState.power) {
     case Power.on:
       controllerState.power = Power.off;
@@ -15,6 +14,16 @@ void turnOnOff() {
       controllerState.power = Power.on;
   }
 
-  controllerState.setState();
-  debugPrint('Power: ${controllerState.power}');
+  final powerIndex = controllerState.power.index;
+  final requestBody = ApiRequestBody(cmd: Command.systemPower, value: powerIndex);
+  final res = await requestApi(requestBody);
+
+  if (res) {
+    controllerState.setState();
+
+    Fluttertoast.showToast(
+      msg: '${requestBody.cmd.displayName} set to ${controllerState.power.name}',
+      backgroundColor: Colors.lightBlue.shade600,
+    );
+  }
 }

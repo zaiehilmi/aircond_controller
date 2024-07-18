@@ -30,16 +30,16 @@ void switchFanSpeed() async {
       break;
   }
 
-  controllerState.setState();
-
   final fanSpeedIndex = controllerState.fanSpeed.index + 1;
   final requestBody = ApiRequestBody(cmd: Command.fanSpeed, value: fanSpeedIndex);
   final res = await requestApi(requestBody);
+
   if (res) {
+    controllerState.setState();
+
     Fluttertoast.showToast(
-      msg: 'llaaaa',
+      msg: '${requestBody.cmd.displayName} set to ${controllerState.fanSpeed.displayName}',
+      backgroundColor: Colors.lightBlue.shade600,
     );
   }
-
-  debugPrint('Fan Speed: ${controllerState.fanSpeed.displayName} \n');
 }
