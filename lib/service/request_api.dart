@@ -4,6 +4,7 @@ import 'package:aircond_remote/service/operation/fan_speed.dart';
 import 'package:aircond_remote/service/operation/mode.dart';
 import 'package:aircond_remote/state/controller_data.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 import 'operation/power.dart';
@@ -51,6 +52,12 @@ Future<bool> requestApi(ApiRequestBody requestBody, {bool isQuery = false}) asyn
 
     if (isQuery) {
       _fetchData(response.body);
+
+      Fluttertoast.showToast(
+        msg: "Data is synchronized",
+        gravity: ToastGravity.TOP,
+        backgroundColor: Colors.blueGrey.shade400,
+      );
     }
 
     if (response.statusCode == 200) {

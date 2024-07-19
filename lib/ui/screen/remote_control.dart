@@ -20,6 +20,13 @@ class _RemoteControlState extends State<RemoteControl> {
 
   @override
   void initState() {
+    // jalankan pertama kali
+    requestApi(
+      ApiRequestBody(cmd: Command.fanSpeed, value: 0),
+      isQuery: true,
+    );
+
+    // jalankan setiap beberapa ketika
     _timer = Timer.periodic(
       pollingInterval,
       (timer) async => await requestApi(
