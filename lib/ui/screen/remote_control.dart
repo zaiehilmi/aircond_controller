@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../widget/remote_buttons.dart';
 import '../widget/remote_screen.dart';
 
-const Duration pollingInterval = Duration(seconds: 30);
+const pollingInterval = Duration(seconds: 30);
 
 class RemoteControl extends StatefulWidget {
   const RemoteControl({super.key});
