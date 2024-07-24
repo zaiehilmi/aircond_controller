@@ -18,9 +18,7 @@ Widget RemoteButtons() {
 // Mode
           IconButton.outlined(
             iconSize: 35,
-            onPressed: () {
-              switchAircondMode();
-            },
+            onPressed: () => switchAircondMode(),
             icon: const Icon(Icons.ac_unit_rounded),
           ),
           _temperatureSetting(),
@@ -28,9 +26,7 @@ Widget RemoteButtons() {
 // Kelajuan Kipas
           IconButton.outlined(
             iconSize: 35,
-            onPressed: () {
-              switchFanSpeed();
-            },
+            onPressed: () => switchFanSpeed(),
             icon: Image.asset(
               'assets/fan.png',
               width: 35,
@@ -44,18 +40,14 @@ Widget RemoteButtons() {
 
 Widget _powerButton() => IconButton.filled(
       iconSize: 45,
-      onPressed: () {
-        turnOnOff();
-      },
+      onPressed: () => turnOnOff(),
       icon: const Icon(Icons.power_settings_new),
     );
 
 Widget _temperatureSetting() => Column(
       children: [
         ElevatedButton(
-          onPressed: () {
-            increaseTemp();
-          },
+          onPressed: () => increaseTemp(),
           child: const Icon(
             Icons.arrow_drop_up_rounded,
             size: 50,
@@ -63,9 +55,7 @@ Widget _temperatureSetting() => Column(
         ),
         const SizedBox(height: 25),
         ElevatedButton(
-          onPressed: () {
-            decreaseTemp();
-          },
+          onPressed: () => decreaseTemp(),
           child: const Icon(
             Icons.arrow_drop_down,
             size: 50,

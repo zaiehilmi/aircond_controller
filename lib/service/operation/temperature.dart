@@ -6,7 +6,11 @@ import '../request_api.dart';
 const int _maxTemp = 30;
 const int _minTemp = 15;
 
-Future<void> adjustTemp({required bool increase}) async {
+void increaseTemp() async => await _adjustTemp(increase: true);
+
+void decreaseTemp() async => await _adjustTemp(increase: false);
+
+Future<void> _adjustTemp({required bool increase}) async {
   if (increase && controllerState.currentTemp < _maxTemp) {
     controllerState.currentTemp += 1;
   } else if (!increase && controllerState.currentTemp > _minTemp) {
@@ -35,12 +39,4 @@ Future<void> adjustTemp({required bool increase}) async {
   }
 
   debugPrint('Suhu semasa: ${controllerState.currentTemp}');
-}
-
-void increaseTemp() async {
-  await adjustTemp(increase: true);
-}
-
-void decreaseTemp() async {
-  await adjustTemp(increase: false);
 }
